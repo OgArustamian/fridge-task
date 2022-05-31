@@ -1,9 +1,23 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const { Product, Category } = require('../db/models');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index');
-});
+const router = express.Router();
+
+router.route('/')
+  .get(async (req, res) => {
+    if (req.session) {
+      const products = await Product.findAll();
+      const categories = await Category.findAll();
+      res.render('index', { products, categories });
+    } else {
+      res.redirect('/users/signup');
+    }
+  })
+  .post(async (req, res) => {
+
+  })
+  .delete(async (req, res) => {
+
+  });
 
 module.exports = router;

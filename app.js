@@ -2,6 +2,13 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const hbs = require('hbs');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const { checkSession } = require('./middleWares/middleWare');
+
+hbs.registerHelper('checkAdmin', (role) => (role === 1));
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
@@ -16,6 +23,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  name: 'sID',
+  store: new FileStore({}),
+  secret: process.env.SESSION,
+  resave: true,
+  saveUninitialized: false,
+}));
+
+app.use(checkSession);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

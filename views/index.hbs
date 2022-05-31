@@ -1,1 +1,24 @@
-<h1>Hello</h1>
+<div class="container">
+    <h1 class="title">Fridge</h1>
+    <ul class="list-group products-list">
+        {{#each products}}
+        <li class="list-group-item">
+            <span>{{this.name}}</span>
+            <img class="remove-btn" src="/images/healthy-eating.png">
+        </li>
+        {{/each}}
+    </ul>
+    <form class="form-field" action="/" method="post">
+        <h2>Add new food</h2>
+        <div class="form-group">
+            <input name="food" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <p>food type</p>
+        <select class="form-control" id="exampleFormControlSelect1">
+            {{#each categories}}
+            <option>{{this.type}}</option>
+            {{/each}}
+        </select>
+        <button type="submit" class="btn btn-primary">add</button>
+    </form>
+</div>

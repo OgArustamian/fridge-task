@@ -1,8 +1,59 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.navbar-nav {
+  margin: 0 auto;
 }
 
-a {
-  color: #00B7FF;
+.container {
+  padding-top: 20px;
+}
+
+.title {
+  text-align: center;
+}
+
+.products-list {
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item span {
+  align-self: center;
+}
+
+.list-group-item:hover {
+  background-color: #40E0D0;
+}
+
+.remove-btn {
+  width: 10%;
+}
+
+.remove-btn:hover {
+  cursor: pointer;
+}
+
+.form-field {
+  padding-top: 30px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-field input {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.form-field select {
+  width: 40%;
+  margin: 0 auto 20px;
+}
+
+.form-field h2 {
+  font-size: 24px;
 }
