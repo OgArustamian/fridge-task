@@ -13,7 +13,7 @@ function checkSession(req, res, next) {
 
 function checkLogin(req, res, next) {
   if (req.session.userId) {
-    return res.redirect('/');
+    return res.redirect('/users/login');
   }
   return next();
 }
