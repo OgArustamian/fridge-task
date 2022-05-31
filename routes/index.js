@@ -26,6 +26,21 @@ router.route('/')
     } catch (err) {
       return res.sendStatus(500);
     }
+  })
+  .put(async (req, res) => {
+    try {
+      const { id } = req.body;
+      const { food, type } = req.body.newFoodData;
+      const foodCategory = await Category.findOne({ where: { type } });
+      const editedFood = await Product.update(
+        { name: food, category_id: foodCategory.id },
+        { where: { id }, returning: true },
+        { raw: true },
+      );
+      return res.json(editedFood[1]);
+    } catch (err) {
+      return res.sendStatus(500);
+    }
   });
 
 router.route('/fridge')

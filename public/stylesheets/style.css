@@ -1,3 +1,8 @@
+.hidden {
+  position: absolute;
+  visibility: hidden;
+}
+
 h1 {
   font-size: 32px;
   text-align: center;
@@ -12,12 +17,13 @@ h1 {
 }
 
 .container {
-  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .products-list {
   text-align: center;
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
 }
 
@@ -34,21 +40,33 @@ h1 {
   background-color: #40E0D0;
 }
 
+.toggle-add-form {
+  margin: 20px auto;
+}
+
 .remove-btn {
   width: 10%;
 }
 
-.like-btn {
-  width: 10%;
-  fill: black;
-}
-
-.like-btn:hover {
-  opacity: 0.6;
+.remove-btn:hover {
   cursor: pointer;
 }
 
-.remove-btn:hover {
+.edit-btn {
+  width: 10%;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.like-btn {
+  width: 10%;
+}
+
+.like-btn:hover {
+  opacity: 0.5;
   cursor: pointer;
 }
 

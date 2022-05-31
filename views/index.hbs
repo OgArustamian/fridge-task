@@ -1,17 +1,19 @@
 {{#if user}}
 <div class="container">
     <h1>Fridge</h1>
+    <button class="btn btn-primary toggle-add-form">add new food</button>
     <ul class="list-group products-list">
         {{#each products}}
-        <li class="list-group-item">
+        <li data-id="{{this.id}}" class="list-group-item">
             <span data-catId="{{this.category_id}}" data-userId="{{this.user_id}}">{{this.name}}</span>
             <span>{{this.value}}%</span>
             <img class="like-btn" src="/images/like-svgrepo-com.svg">
-            <img data-id="{{this.id}}" class="remove-btn" src="/images/healthy-eating.png">
+            <img class="edit-btn" src="/images/edit-svgrepo-com.svg">
+            <img class="remove-btn" src="/images/healthy-eating.png">
         </li>
         {{/each}}
     </ul>
-    <form class="form-field">
+    <form class="add-form form-field hidden">
         <h2>Add new food</h2>
         <div class="form-group">
             <input name="food" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -23,6 +25,20 @@
             {{/each}}
         </select>
         <button class="add-btn btn btn-primary">add</button>
+    </form>
+
+    <form class="edit-form form-field hidden">
+        <h2>Edit food</h2>
+        <div class="form-group">
+            <input name="food" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <p>food type</p>
+        <select name="type" class="form-control" id="exampleFormControlSelect1">
+            {{#each categories}}
+            <option>{{this.type}}</option>
+            {{/each}}
+        </select>
+        <button class="btn btn-primary">edit</button>
     </form>
 </div>
 {{/if}}
