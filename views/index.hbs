@@ -1,16 +1,15 @@
 {{#if user}}
 <div class="container">
-    <h1 class="title">Fridge</h1>
+    <h1>Fridge</h1>
     <ul class="list-group products-list">
-        {{!-- {{#if (checkAdmin user.roleId)}} --}}
         {{#each products}}
         <li class="list-group-item">
             <span data-catId="{{this.category_id}}" data-userId="{{this.user_id}}">{{this.name}}</span>
             <span>{{this.value}}%</span>
+            <img class="like-btn" src="/images/like-svgrepo-com.svg">
             <img data-id="{{this.id}}" class="remove-btn" src="/images/healthy-eating.png">
         </li>
         {{/each}}
-        {{!-- {{/if}} --}}
     </ul>
     <form class="form-field">
         <h2>Add new food</h2>

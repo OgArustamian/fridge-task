@@ -1,14 +1,11 @@
 const express = require('express');
 const { Product, Category } = require('../db/models');
+const { checkLogin } = require('../middleWares/middleWare');
 
 const router = express.Router();
 
 router.route('/')
-  .get(async (req, res) => {
-    const products = await Product.findAll();
-    const categories = await Category.findAll();
-    res.render('index', { products, categories });
-  })
+  .get(checkLogin, async (req, res) => res.render('home'))
   .post(async (req, res) => {
     try {
       const { food, type } = req.body;
@@ -29,6 +26,18 @@ router.route('/')
     } catch (err) {
       return res.sendStatus(500);
     }
+  });
+
+router.route('/fridge')
+  .get(checkLogin, async (req, res) => {
+    const categories = await Category.findAll();
+    if (req.session.roleId === 1) {
+      const products = await Product.findAll();
+      return res.render('index', { products, categories });
+    }
+    const { userId } = req.session;
+    const products = await Product.findAll({ where: { user_id: userId } });
+    return res.render('index', { products, categories });
   });
 
 module.exports = router;

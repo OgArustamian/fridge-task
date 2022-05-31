@@ -1,13 +1,18 @@
+h1 {
+  font-size: 32px;
+  text-align: center;
+}
+
 .navbar-nav {
   margin: 0 auto;
 }
 
-.container {
-  padding-top: 20px;
+.header-greet {
+  margin: 0 auto;
 }
 
-.title {
-  text-align: center;
+.container {
+  padding: 40px 0;
 }
 
 .products-list {
@@ -31,6 +36,16 @@
 
 .remove-btn {
   width: 10%;
+}
+
+.like-btn {
+  width: 10%;
+  fill: black;
+}
+
+.like-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .remove-btn:hover {

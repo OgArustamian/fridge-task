@@ -6,7 +6,7 @@ const { checkLogin } = require('../middleWares/middleWare');
 const router = express.Router();
 
 router.route('/signup')
-  .get(checkLogin, (req, res) => {
+  .get((req, res) => {
     res.render('signup');
   })
   .post(async (req, res) => {
@@ -19,7 +19,7 @@ router.route('/signup')
         req.session.userName = newUser.name;
         req.session.userPass = newUser.password;
         req.session.roleId = newUser.role_id;
-        return res.redirect('/');
+        return res.redirect('/fridge');
       }
       return res.redirect('/users/login');
     }
@@ -27,7 +27,7 @@ router.route('/signup')
   });
 
 router.route('/login')
-  .get(checkLogin, (req, res) => {
+  .get((req, res) => {
     res.render('login');
   })
   .post(async (req, res) => {
@@ -40,7 +40,7 @@ router.route('/login')
         req.session.userName = currentUser.name;
         req.session.userPass = currentUser.password;
         req.session.roleId = currentUser.role_id;
-        return res.redirect('/');
+        return res.redirect('/fridge');
       }
       return res.redirect('/users/login');
     }

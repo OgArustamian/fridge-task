@@ -19,6 +19,7 @@ addBtn.addEventListener('click', async (evt) => {
     <li class="list-group-item">
         <span data-catId="${newFood.category_id}" data-userId="${newFood.user_id}">${newFood.name}</span>
         <span>${newFood.value}%</span>
+        <img class="like-btn" src="/images/like-svgrepo-com.svg">
         <img data-id="${newFood.id}" class="remove-btn" src="/images/healthy-eating.png">
     </li>
     `);
@@ -39,7 +40,7 @@ prodList.addEventListener('click', async (evt) => {
     });
 
     if (deleteResponse.ok) {
-      evt.target.closest('li').remove();
+      evt.target.closest('.list-group-item').remove();
     }
   }
 });

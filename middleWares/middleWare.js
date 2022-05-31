@@ -4,7 +4,7 @@ function checkSession(req, res, next) {
       name: req.session.userName,
       id: req.session.userId,
       pass: req.session.userPass,
-      roleId: req.session.role_id,
+      roleId: req.session.roleId,
     };
     return next();
   }
@@ -12,7 +12,7 @@ function checkSession(req, res, next) {
 }
 
 function checkLogin(req, res, next) {
-  if (req.session.userId) {
+  if (!req.session.userId) {
     return res.redirect('/users/login');
   }
   return next();
